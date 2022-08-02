@@ -39,16 +39,28 @@ debug_array($games)
     <tbody>
       <!-- row 1 -->
       <tr>
-        <th>1</th>
-        <td>Mario</td>
-        <td>Plateforme</td>
-        <td>Switch</td>
-        <td>39.99</td>
-        <td>3</td>
-        <a href="show.php">
-        <td><img src="img/loupe.png" alt="loupe" class="w-4"></td>
-        </a>
-      </tr>
+        
+      <?php
+
+if (count ($games) == 0) { 
+  echo "<td>Pas de jeu disponible actuellement</td>";
+} else { ?>
+  <?php foreach($games as $game): ?>
+    <tr>
+  <th><?= $game["id"] ?></th>
+  <td><?= $game["name"] ?></td>
+  <td><?= $game["genre"] ?></td>
+  <td><?= $game["plateforms"] ?></td>
+  <td><?= $game["price"] ?></td>
+  <td><?= $game["PEGI"] ?></td>
+  <a href="show.php">
+  <td><img src="img/loupe.png" alt="loupe" class="w-4">
+</a>
+</td>
+  
+</tr> 
+<?php endforeach ?>
+<?php } ?>
     </tbody>
   </table>
 </div>
